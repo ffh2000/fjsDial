@@ -1,0 +1,515 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+dials_matrix_size = {cols:4, rows:3};
+var dials = [
+    {
+        title: "Главная",
+        dials: [
+			{
+				order: 0,
+				url: "http://www.yandex.ru/",
+				title: "Yandex",
+				img: "img/yandex.ru.png",
+				description: ""
+			},
+			{
+				order: 4,
+				url: "http://map.ttu-nn.ru/online.php?15/56.3017/44.0189#15/56.3065/44.0127",
+				title: "Движение трамваев",
+				img: "img/tramvai.jpg",
+				description: ""
+			},
+			{
+				order: 4,
+				url: "http://ru.wikipedia.org/",
+				title: "ВикипедиЯ",
+				img: "img/wikipedia.ru.png",
+				description: ""
+			},
+			{
+				order: 1,
+				url: "http://www.google.com/",
+				title: "Google.com",
+				img: "img/google.png",
+				description: ""
+			},
+        ]
+    },
+    {
+        title: "Видео/Новости",
+        dials: [
+			{
+				order: 0,
+				url: "https://vgtrk.ru/russia24",
+				title: "Россия 24",
+				img: "img/rus24.jpg",
+				description: ""
+			},
+			{
+				order: 0,
+				url: "https://www.1tv.ru/live",
+				title: "1 канал",
+				img: "img/1channel.jpg",
+				description: ""
+			},
+            {
+                order: 0,
+                url: "http://www.youtube.ru/",
+                title: "Youtube",
+                img: "img/youtube.png",
+                description: ""
+            },
+			{
+				order: 0,
+				url: "http://rutube.ru/",
+				title: "Rutube",
+				img: "img/rutube.png",
+				description: ""
+			},
+            {
+                order: 2,
+                url: "http://www.ngs.ru/",
+                title: "НГС",
+                img: "img/ngs.ru.jpg",
+                description: "Новосибирский городской сайт"
+            },
+            {
+                order: 3,
+                url: "http://www.nn.ru/",
+                title: "НН.RU",
+                img: "img/nn.ru.gif",
+                description: "Нижегородский городской сайт"
+            },
+            {
+                order: 4,
+                url: "http://rbc.ru/",
+                title: "РБК",
+                img: "img/rbc.ru.png",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "http://www.utro.ru/",
+                title: "Ytro.ru",
+                img: "img/utro.ru.png",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "http://www.lenta.ru/",
+                title: "lenta.ru",
+                img: "img/lenta.ru.png",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "http://www.gazeta.ru/",
+                title: "Газета.ru",
+                img: "img/gazeta.ru.svg",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "http://www.elementy.ru/",
+                title: "Элементы",
+                img: "img/elementy.ru.png",
+                description: ""
+            },
+       ]
+	},
+	{
+		title: "Соцсети",
+		dials: [
+            {
+                order: 4,
+                url: "http://www.ok.ru/",
+                title: "Одноклассники",
+                img: "img/ok.ru.png",
+                description: ""
+            },
+			{
+				order: 4,
+				url: "http://www.vk.ru/",
+				title: "ВКонтакте",
+				img: "img/vk.png",
+				description: ""
+			},
+            {
+                order: 4,
+                url: "http://www.facebook.com/",
+                title: "Facebook",
+                img: "img/facebook.png",
+                description: ""
+            },
+		]
+	},
+	{
+		title: "Магазины",
+		dials: [
+            {
+                order: 4,
+                url: "https://dns-shop.ru/",
+                title: "DNS",
+                img: "img/dns.png",
+                description: ""
+            },
+			{
+				order: 4,
+				url: "https://nizhniy-novgorod.leroymerlin.ru/",
+				title: "leroymerlin.ru",
+				img: "img/leroymerlin.ru.svg",
+				description: ""
+			},
+            {
+                order: 4,
+                url: "https://www.maxidom.ru/",
+                title: "МаксидоМ",
+                img: "img/maxidom.png",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "https://akson.ru/",
+                title: "АКСОН",
+                img: "img/akson.jpg",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "https://www.castorama.ru/",
+                title: "Castorama",
+                img: "img/castorama.png",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "https://obi.ru/",
+                title: "OBI",
+                img: "img/OBI_Logo_rgb.svg",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "https://nn.vseinstrumenti.ru",
+                title: "Все инструменты",
+                img: "img/vseinstrum.ico",
+                description: ""
+            },
+            {
+                order: 4,
+                url: "https://nnv.saturn.net",
+                title: "Сатурн",
+                img: "img/saturn.svg",
+                description: ""
+            },
+        ]
+    }];
+
+function initDials() {
+	var body = window;
+	var pages = '';
+	pages = '<div class="dial-page">';
+	//расчет размера одной панели в px
+	var dial_width = 100 / dials_matrix_size.cols;
+	var dial_height = 100 / dials_matrix_size.rows;
+
+	var c = dials_matrix_size.cols * dials_matrix_size.rows;
+	var i, n;
+	var one_page = "";
+	var dialId = 0;
+        var dialId_count;
+        var pageId = 0;
+        var tabs_html = (dials.length > 1 ? '<div class="tabs-container">' : '');
+	for (i = 0, n = dials.length; i < n; ++i) {
+            if (dials.length > 1) {
+                tabs_html = tabs_html + '<div class="tab' +
+                ((pageId == 0) ? ' selected' : '') +
+                '" page_index="' + pageId +
+                '" onclick = "onTabClick(' + i + ')">' +
+                dials[pageId].title + '</div>';
+            }
+
+	    one_page = one_page + '<div class="tab-page" page_index="' + pageId + '"';
+	    //на старте отображаем только первую страницу
+	    if (i == 0)
+            one_page = one_page + ' style="display:block">';
+	    else
+            one_page = one_page + ' style="display:none">';
+
+        one_page = one_page + '<table>';
+        //формирование панелек на странице
+        dialId_count = dials[pageId].dials.length;
+        dialId = 0;
+        for (row = 0; row < dials_matrix_size.rows; row++) {
+            one_page = one_page + '<tr>';
+            for (col = 0; col < dials_matrix_size.cols; col++) {
+                one_page = one_page + '<td style="width:' + dial_width + '%;' +
+                    'height:' + dial_height + '%">';
+                //создание одной панельки
+                one_page = one_page + '<div class="dial-panel"';
+                if (dials[pageId].dials[dialId] !== undefined) {
+                    one_page = one_page + ' url="' + dials[pageId].dials[dialId].url +
+                    '" onclick="onDialClick(this)"';
+                    //для браузеров, неподдерживающих :hover не на <a>
+                    if ((window.browser != 'firefox') && 
+                        (window.browser != 'chrome')) {
+                        one_page = one_page + ' onmouseover="dialOnMouseOver(this)" ' +
+                            'onmouseleave="dialOnMouseLeave(this)">';
+                    } else {
+                        console.log(window.browser);
+                        one_page = one_page + '">'
+                    }
+                    //заголовок панельки
+                    one_page = one_page +
+                        '<div class="header">' + dials[pageId].dials[dialId].title + '</div>';
+                    //если есть картинка
+                    if (dials[pageId].dials[dialId].img != '') {
+                        one_page = one_page +
+//                            '<div class="body"><img src="' + dials[pageId].dials[dialId].img +
+//                            '" alt="' + dials[pageId].dials[dialId].title + '"></div>';
+                            '<div class="body" style="background:url(' + dials[pageId].dials[dialId].img +
+                            ') no-repeat center center;")>' +
+							(dials[pageId].dials[dialId].description != '' ?
+								'<div>' + dials[pageId].dials[dialId].description + '</div>' :
+							    '') +
+							'</div>';
+                    }
+                    one_page = one_page + '</div>';
+                } else {
+                    one_page = one_page + '>';
+                }
+                one_page = one_page + '</td>';
+                dialId++;
+            }
+            one_page = one_page + '</tr>';
+        }
+        one_page = one_page + '</table></div>';
+        pageId++;
+    }
+
+
+	pages += one_page + '</div>';
+	el = document.getElementsByClassName('tab-content')[0];
+	el.innerHTML = pages;
+
+        //если несколько страниц вкладок
+        if (dials.length > 1) {
+            tabs_html = tabs_html + '</div>';
+            document.body.innerHTML = tabs_html + document.body.innerHTML;
+        } else {
+            el = document.getElementsByClassName('dial-page')[0];
+            el.style.height = '100%';
+        }
+}
+
+function dialOnMouseOver(el) {
+    el.className = 'dial-panel hover';
+}
+
+function dialOnMouseLeave(el) {
+    el.className = 'dial-panel';
+}
+window.onresize = function () {
+}
+
+//функции для определния, нажати ли Ctrl что бы открыть ссылку в новом окне или в текущем
+var ctrlDown = false;
+var setCtrlDown = function(event){
+    console.log(event.keyCode);
+    if(event.keyCode === 17 || event.charCode === 17){
+        window.ctrlDown = true;
+    }
+};
+
+var setCtrlUp = function(event){
+    if(event.keyCode === 17 || event.charCode === 17){
+        window.ctrlDown = false;
+    }
+};
+
+function onTabClick(tabId) {
+    var current_tab = document.querySelector('.tabs-container .tab.selected');
+    var current_page = document.querySelector('.tab-content .tab-page[page_index="' + current_tab.getAttribute('page_index') + '"]');
+    current_tab.className = 'tab';
+    var tab = document.querySelector('.tabs-container .tab[page_index="' + tabId +'"]');
+    var page = document.querySelector('.tab-content .tab-page[page_index="' + tabId + '"]');
+    tab.className = 'tab selected';
+    current_page.style.display = 'none';
+    page.style.display = 'block';
+    console.log(tab);
+}
+
+function browser() {
+    var ua = navigator.userAgent;
+    if (ua.search(/MSIE/) > 0) return 'ie';
+    if (ua.search(/Firefox/) > 0) return 'firefox';
+    if (ua.search(/Opera/) > 0) return 'opera';
+    if (ua.search(/Chrome/) > 0) return 'chrome';
+//    if (ua.search(/Safari/) > 0) return 'safari';
+//    if (ua.search(/Konqueror/) > 0) return 'konqueror';
+//    if (ua.search(/Iceweasel/) > 0) return 'iceweasel';
+//    if (ua.search(/SeaMonkey/) > 0) return 'seaMonkey';
+    // Браузеров очень много, все вписывать смысле нет, Gecko почти везде встречается
+    if (ua.search(/Gecko/) > 0) return 'Gecko';
+    // а может это вообще поисковый робот
+    return 'bot';
+}
+
+function onDialClick(dial) {
+    var url = fjsdial.getAttribute('url');
+    //если Ctrl нажат, то открыть в текущем, иначе в новом
+    if (ctrlDown) {
+        window.location = url;
+    } else {
+        window.open(url, '_blank');
+    }
+}
+
+window.onload = function() {
+	if (!document.getElementsByClassName) {
+		document.getElementsByClassName = function(classList, node) {			
+			var node = node || document,
+			list = node.getElementsByTagName('*'), 
+			length = list.length,  
+			classArray = classList.split(/\s+/), 
+			classes = classArray.length, 
+			result = [], i,j
+			for(i = 0; i < length; i++) {
+				for(j = 0; j < classes; j++)  {
+					if(list[i].className.search('\\b' + classArray[j] + '\\b') != -1) {
+						result.push(list[i])
+						break
+					}
+				}
+			}
+			return result
+		}
+	}
+
+    window.browser = browser();
+    initDials();
+    window.addEventListener? document.addEventListener('keydown', setCtrlDown) : document.attachEvent('keydown', setCtrlDown);
+    window.addEventListener? document.addEventListener('keyup', setCtrlUp) : document.attachEvent('keyup', setCtrlUp);
+}
+
+
+</script>
+
+<style type="text/css">
+.dial-page {
+	/*border: 1px solid lightgray;*/
+	margin: 0px;
+	width: 100%;
+	height: calc(100% - 30px);
+	position: absolute;
+}
+
+.tab-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.tab-page table {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border-spacing: 0;
+}
+
+.tab-page table td {
+    padding: 5px;
+    z-index: 1;
+}
+
+.dial-panel {
+    border: 1px solid lightblue;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    background: white;
+    overflow:hidden;
+}
+
+.dial-panel:hover, .dial-panel.hover {
+    border: 1px solid #9FC7D4;
+    background: #bbdff2;
+    z-index: 99999;
+    font-weight: bold;
+}
+
+.dial-panel .header {
+    text-align: center;
+    font-family: monospace;
+    height: 15px;
+    font-size: 15px;
+    margin: 2px;
+}
+
+.dial-panel .body{
+    background-size: contain !important;
+    height: calc(100% - 30px);
+    width: calc(100% - 6px);
+    vertical-align: middle;
+    margin: 3px;
+    border: 0px solid black;
+    padding: 0px;
+}
+
+.dial-panel .body div {
+	background: white;
+	opacity: 0.8;
+	color: navy;
+	padding: 3px;
+}
+
+.tabs-container .tab {
+    overflow: hidden;
+    margin: 0px 0px 3px 0px;
+    border: 1px solid lightblue;
+    padding: 5px 5px 0px 5px;
+    display: inline-block;
+    height: 100%;
+    font-size: 15px;
+    font-family: monospace;
+    cursor: pointer;
+    background: white;
+    height: 20px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.tabs-container .tab:hover, .tabs-container .tab.hover, .tabs-container .tab.selected {
+    border: 1px solid #9FC7D4;
+    background: linear-gradient(10deg, #bbdff2, white);
+    font-weight: bold;
+}
+
+.tabs-container {
+    margin: 0px 5px 0px 10px;
+    width: calc(100% - 10px);
+    height: 30px;
+    display: block;
+    overflow: hidden;
+}
+
+.tab-content {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+</style>
+
+</head>
+<body>
+<div class="tab-content"></div>
+</body>
+</html>
